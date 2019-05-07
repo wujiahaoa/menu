@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/typelist/typelist",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "孤街酒客",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#333",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/kaixin-act.png",
+        "selectedIconPath": "img/kaixin.png"
+      },
+      {
+        "pagePath": "pages/typelist/typelist",
+        "text": "分类",
+        "iconPath": "img/reader-act.png",
+        "selectedIconPath": "img/reader.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "img/caipu-act.png",
+        "selectedIconPath": "img/caipu.png"
+      }
+    ]
+  }
+}

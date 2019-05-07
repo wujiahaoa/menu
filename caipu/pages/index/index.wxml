@@ -1,0 +1,26 @@
+<view wx:if='{{issearch}}'>
+  <view class="top">
+    <view bindtap='opensearch' class='search'>
+      <image src="../../img/search.png" class="search-img"></image>
+      <view class="search-text">今天想吃什么？</view>
+    </view>
+    <text class='search-title'>先知后行，饮食尤甚</text>
+  </view>
+  <view wx:for="{{menulist}}" wx:key="{{item.id}}">
+    <view>
+      <image src='{{item.pic}}'></image>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:else>
+  <view class='search-box'>
+    <view class='search-left'>
+      <image src="../../img/search.png" bindtap="send" class="search-img"></image>
+      <input type="text" class="search-inp" placeholder='今天想吃点什么？' value="{{searchValue}}" placeholder-class='content' confirm-type='search' bindinput='inputbind' bindconfirm='send'> </input>
+    </view>
+    <view class='cancel' bindtap='cancel'>取消</view> 
+  </view>
+
+</view>
