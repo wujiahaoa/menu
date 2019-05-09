@@ -1,6 +1,11 @@
 <view wx:if="{{islogin}}">
-  <image src='{{userinfo.avatarUrl}}'></image>
-  <text>{{userinfo.nickName}}</text>
+  <view class='top'>
+    <image class='bgimg' src='../../img/my@bg.png'></image>
+    <image class='avatimg' src='{{userinfo.avatarUrl}}'></image>
+    <view class='username'>{{userinfo.nickName}}</view>
+  </view>
+
+
 </view>
 <view wx:else>
   <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>

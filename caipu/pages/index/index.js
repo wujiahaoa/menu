@@ -27,7 +27,7 @@ Page({
       thistimemenu = '夜宵'
     }
     console.log(thistimemenu)
-    request.getReq(`/recipe/search?keyword=${thistimemenu}&num=20&appkey=${request.appkey}`, res => {
+    request.getReq(`/recipe/search?keyword=午餐&num=20&appkey=${request.appkey}`, res => {
       console.log(res)
       this.setData({
         menulist:res.data.result.list

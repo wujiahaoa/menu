@@ -1,1 +1,25 @@
-/* pages/user/user.wxss */
+.top{
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction:column;
+}
+.bgimg{
+  width: 100%;
+}
+.avatimg{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 210rpx;
+  left: 315rpx;
+}
+.username{
+  display: block;
+  position: absolute;
+  top: 350rpx;
+  width: 100%;
+  color: #666;
+  font-size: 36rpx;
+}

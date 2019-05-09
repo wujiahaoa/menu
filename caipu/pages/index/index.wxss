@@ -57,3 +57,16 @@ page {
   color: #008cd7;
   line-height:70rpx;
 }
+.menuitem{
+  display: inline-block;
+  width: 335rpx;
+  margin: 10rpx 20rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+}
+.menuitem image{
+  width: 100%;
+  height: 550rpx;
+  box-shadow: 0 0 10px #ccc;
+}
