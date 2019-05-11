@@ -1,0 +1,20 @@
+<view>
+  <image src='{{details.pic}}' class='menupic' mode='widthFix'></image>
+  <text class='title'>{{details.name}}</text>
+
+</view>
+<view class='describe'>
+  <text>制作时长：{{details.preparetime}}    </text>
+  <text>人数：{{details.peoplenum}}</text>
+</view>
+<text class='seasoning'>用料</text>
+<view class='material' wx:for="{{details.material}}" wx:key="{{item.index}}">
+  <view>{{item.mname}}</view>
+  <view>{{item.amount}}</view>
+</view>
+<text class='step'>步骤</text>
+<view wx:for="{{details.process}}" wx:key="{{item.index}}" class='everystep'>
+  <text>{{item.index}}</text>
+  <image src='{{item.pic}}' mode='widthFix' class='stepimg'></image>
+  <text class='steptitle'>{{item.pcontent}}</text>
+</view>

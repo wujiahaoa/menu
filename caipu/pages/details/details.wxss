@@ -1,0 +1,62 @@
+page {
+  background-color: #fff;
+}
+
+.menupic {
+  width: 750rpx;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  color: #333;
+  line-height: 70rpx;
+  font-size: 38rpx;
+}
+
+.describe {
+  text-align: center;
+  color: #777;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+
+.seasoning, .step {
+  font-size: 40rpx;
+  color: #333;
+  display: block;
+  line-height: 110rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+}
+
+.material {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+  border-bottom: 0.5rpx solid #f0f6f7;
+  margin: 15rpx 20rpx;
+  padding-bottom: 15rpx;
+  font-size: 30rpx;
+}
+
+.everystep {
+  margin: 20rpx 20rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+.stepimg {
+  width: 710rpx;
+}
+
+.steptitle {
+  color: #666;
+  font-size: 36rpx;
+  display: inline-block;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx; 
+}

@@ -6,9 +6,9 @@
     </view>
     <text class='search-title'>先知后行，饮食尤甚</text>
   </view>
-  <view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem'>
+  <view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
     <view>
-      <image src='{{item.pic}}'></image>
+      <image src='{{item.pic}}' lazy-load='true' mode='widthFix'></image>
       <text>{{item.name}}</text>
     </view>
   </view>

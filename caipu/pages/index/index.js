@@ -1,4 +1,4 @@
-const app = getApp()
+var app = getApp()
 import request from '../../utils/request.js'
 import getTime from '../../utils/getTime.js'
 var that = this;
@@ -26,12 +26,13 @@ Page({
     } else if (house > 21 || house <4) {
       thistimemenu = '夜宵'
     }
-    console.log(thistimemenu)
-    request.getReq(`/recipe/search?keyword=午餐&num=20&appkey=${request.appkey}`, res => {
+    request.getReq(`/recipe/search?keyword=${thistimemenu}&num=20&appkey=${request.appkey}`, res => {
       console.log(res)
       this.setData({
         menulist:res.data.result.list
       })
+      console.log(app)
+      app.globalData.menulist = res.data.result.list
     })
   },
   opensearch(){
@@ -48,15 +49,21 @@ Page({
     this.setData({
       inputValue: e.detail.value
     })
-    console.log('bindInput' + this.data.inputValue)
   },
   send(e) {
+    let issearch = this.data.issearch;
     request.getReq(`/recipe/search?keyword=${this.data.inputValue}&num=20&appkey=${request.appkey}`, res => {
-      console.log(res)
-      console.log(res.data.result.list)
       this.setData({
-        menulist: res.data.result.list
+        menulist: res.data.result.list,
+        issearch:true
       })
+      app.globalData.menulist = res.data.result.list
+    })
+  },
+  gotodetails(e){
+    let $id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `../details/details?id=${$id}`,
     })
   }
 })

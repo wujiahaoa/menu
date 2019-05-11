@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/typelist/typelist",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/details/details"
   ],
   "window": {
     "backgroundTextStyle": "light",
