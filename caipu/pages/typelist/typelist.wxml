@@ -1,2 +1,12 @@
-<!--pages/typelist/typelist.wxml-->
-<text>pages/typelist/typelist.wxml</text>
+<view class='content-wrap'>
+  <view class='tab'>
+    <scroll-view scroll-y="true" class='scroll-tab'>
+      <view wx:for="{{typeList}}" wx:key="{{item.classid}}" data-id='{{item.classid}}' class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="changeMenu">{{item.name}}</view>
+    </scroll-view>
+  </view>
+  <view class='item'>
+    <scroll-view scroll-y="true" class='scroll-tab'>
+      <view class='tyepitem' data-id='{{item.classid}}' data-name="{{item.name}}" bindtap='navtomenu' wx:for="{{itemlist}}" wx:key="{{item.classid}}">{{item.name}}</view>
+    </scroll-view>
+  </view>
+</view>

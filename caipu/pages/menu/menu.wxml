@@ -1,2 +1,6 @@
-<!--pages/menu/menu.wxml-->
-<text>pages/menu/menu.wxml</text>
+<view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
+  <view>
+    <image src='{{item.pic}}' lazy-load='true' mode='widthFix'></image>
+    <text>{{item.name}}</text>
+  </view>
+</view>

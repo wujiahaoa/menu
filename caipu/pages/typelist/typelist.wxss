@@ -1,1 +1,45 @@
-/* pages/typelist/typelist.wxss */
+.content-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.on{
+  background-color: #f0f6f7;
+}
+.tab{
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 240rpx;
+}
+.scroll-tab{
+  height: 100%;
+}
+.swiper-tab-list{
+  width: 240rpx;
+  height: 90rpx;
+  border-bottom: 1rpx solid #d6d6d6;
+  line-height: 90rpx;
+  text-align: center;
+  color: #333;
+}
+.item{
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 240rpx;
+  right: 0;
+  /* background-color: #f0f6f7; */
+}
+.tyepitem{
+  display: inline-block;
+  background-color: #f0f6f7;
+  margin: 10rpx;
+  padding: 10rpx;
+  color: #555;
+  font-size: 30rpx;
+}

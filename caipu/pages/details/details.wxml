@@ -18,3 +18,11 @@
   <image src='{{item.pic}}' mode='widthFix' class='stepimg'></image>
   <text class='steptitle'>{{item.pcontent}}</text>
 </view>
+<view class='collection'>
+  <view class='' wx:if="{{iscollection}}" bindtap='collection'>
+    <image src='../../img/collection.png'></image>
+  </view>
+  <view class='' wx:else bindtap='collection'>
+    <image src='../../img/collection-act.png'></image>
+  </view>
+</view>

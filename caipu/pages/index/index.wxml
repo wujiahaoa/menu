@@ -6,21 +6,35 @@
     </view>
     <text class='search-title'>先知后行，饮食尤甚</text>
   </view>
-  <view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
-    <view>
+  <view class='left'>
+    <view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
       <image src='{{item.pic}}' lazy-load='true' mode='widthFix'></image>
       <text>{{item.name}}</text>
     </view>
   </view>
+  <view class='right'>
+    <view wx:for="{{menulist}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
+      <image src='{{item.pic}}' lazy-load='true' mode='widthFix'></image>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
 </view>
 
 <view wx:else>
   <view class='search-box'>
     <view class='search-left'>
       <image src="../../img/search.png" bindtap="send" class="search-img"></image>
-      <input type="text" class="search-inp" placeholder='今天想吃点什么？' value="{{searchValue}}" placeholder-class='content' confirm-type='search' bindinput='inputbind' bindconfirm='send'> </input>
+      <input type="text" focus="true" class="search-inp" placeholder='今天想吃点什么？' value="{{searchValue}}" placeholder-class='content' confirm-type='search' bindinput='inputbind' bindconfirm='send'> </input>
     </view>
     <view class='cancel' bindtap='cancel'>取消</view>
   </view>
 
+  <view class='popularserch'>
+    <view class='historywarp'>
+      <text class='history'>搜索历史</text>
+      <text class='del' bindtap='del'>清空</text>
+    </view>
+    <text class='itempopularserch' wx:for="{{popularserch}}" wx:key="{{index}}" data-val="{{item}}" bindtap='searchthisitem'>{{item}}</text>
+  </view>
 </view>

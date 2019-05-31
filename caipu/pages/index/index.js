@@ -1,46 +1,44 @@
 var app = getApp()
 import request from '../../utils/request.js'
 import getTime from '../../utils/getTime.js'
+import tips from '../../utils/msg.js'
 var that = this;
 Page({
   data: {
-    issearch:true,
+    issearch: true,
     searchValue: '',
-    menulist: []
+    menulist: [],
+    popularserch: [],
+    page:1,
+    size:20,
+    keyword:''
   },
-  onLoad: function() {
-    let thistimemenu;
-    let date = new Date();
-    let month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-    let strDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-    let house = date.getHours()
-    console.log(house)
-    if (house > 4 && house < 11) {
-      thistimemenu = '早餐'
-    } else if (house > 11 && house < 14) {
-      thistimemenu = '午餐'
-    } else if (house > 14 && house < 17) {
-      thistimemenu = '下午茶'
-    } else if (house < 21 && house > 17) {
-      thistimemenu = '晚餐'
-    } else if (house > 21 || house <4) {
-      thistimemenu = '夜宵'
-    }
-    request.getReq(`/recipe/search?keyword=${thistimemenu}&num=20&appkey=${request.appkey}`, res => {
-      console.log(res)
+  onLoad() {
+    console.log(this.data.popularserch)
+    let { page, size, keyword } = this.data
+    let recommendlist = tips.recommendlist
+    keyword = recommendlist[Math.floor((Math.random() * recommendlist.length))]
+    request.getReq(`/recipe/search?keyword=${keyword}&start=1&num=20&appkey=${request.appkey}`, res => {
       this.setData({
-        menulist:res.data.result.list
+        menulist: res.data.result.list,
+        keyword
       })
-      console.log(app)
       app.globalData.menulist = res.data.result.list
     })
   },
-  opensearch(){
+  onShow: function() {
+    app.globalData.menulist = this.data.menulist
+  },
+  opensearch() {
+    let popularserch = this.data.popularserch
+    let storage = wx.getStorageSync('popularserch')
+    let $popularserch = storage ? storage : []
     this.setData({
+      popularserch: $popularserch,
       issearch: false
     })
   },
-  cancel(){
+  cancel() {
     this.setData({
       issearch: true
     })
@@ -52,18 +50,79 @@ Page({
   },
   send(e) {
     let issearch = this.data.issearch;
-    request.getReq(`/recipe/search?keyword=${this.data.inputValue}&num=20&appkey=${request.appkey}`, res => {
-      this.setData({
-        menulist: res.data.result.list,
-        issearch:true
-      })
-      app.globalData.menulist = res.data.result.list
+    let popularserch = this.data.popularserch;
+    let keyword = this.data.keyword;
+    let val = this.data.inputValue
+    let that = this;
+    that.setData({
+      keyword: val
+    })
+    popularserch.push(val)
+    popularserch = Array.from(new Set(popularserch))
+    wx.setStorageSync('popularserch', popularserch)
+    request.getReq(`/recipe/search?keyword=${val}&start=1&num=20&appkey=${request.appkey}`, res => {
+      if (res.data.status == 0){
+        that.setData({
+          menulist: res.data.result.list,
+          issearch: true
+        })
+        app.globalData.menulist = res.data.result.list
+      }else{
+        wx.showToast({
+          title: res.data.msg,
+          icon:'none'
+        })
+      }
+     
     })
   },
-  gotodetails(e){
+  gotodetails(e) {
     let $id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `../details/details?id=${$id}`,
     })
-  }
+  },
+  searchthisitem(e) {
+    let val = e.currentTarget.dataset.val
+    let keyword = this.data.keyword;
+    request.getReq(`/recipe/search?keyword=${val}&num=20&appkey=${request.appkey}`, res => {
+      this.setData({
+        menulist: res.data.result.list,
+        issearch: true,
+        keyword:val
+      })
+      app.globalData.menulist = res.data.result.list
+    })
+  },
+  del(){
+    wx.removeStorageSync('popularserch')
+    this.setData({
+      popularserch:[]
+    })
+  },
+  onReachBottom: function () {
+    let { page, size, keyword, menulist} = this.data;
+    var that = this;
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    page = page + size;
+    request.getReq(`/recipe/search?keyword=${keyword}&start=${page}&num=${size}&appkey=${request.appkey}`, res => {
+      console.log(res)
+      if(res.data.status == 0){
+        this.setData({
+          menulist: [...menulist, ...res.data.result.list],
+          keyword,
+          page
+        })
+        app.globalData.menulist = [...menulist, ...res.data.result.list]
+      }else{
+        wx.showToast({
+          title: res.data.msg,
+          icon:'none'
+        })
+      }
+      
+    })
+  },
 })

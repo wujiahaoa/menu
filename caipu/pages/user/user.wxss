@@ -11,9 +11,12 @@
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
+  margin-top: -45rpx;
+  margin-left: -60rpx;
   position: absolute;
-  top: 210rpx;
-  left: 315rpx;
+  top: 50%;
+  left: 50%;
+  box-shadow: 1px 1px 1px #eee;
 }
 .username{
   display: block;
@@ -22,4 +25,28 @@
   width: 100%;
   color: #666;
   font-size: 36rpx;
+}
+.menuitem{
+  display: inline-block;
+  width: 335rpx;
+  margin: 10rpx 20rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+}
+.menuitem image{
+  width: 100%;
+  /* height: 550rpx; */
+  box-shadow: 0 0 10px #ccc;
+}
+.mycollection{
+  margin: 10rpx 0;
+  color: #333;
+  margin-left: 30rpx;
+}
+.btn-ok{
+  width: 650rpx;
+  margin: 50rpx;
+  background-color: #f0f6f7;
+  color: #07c156;
 }

@@ -4,9 +4,26 @@
     <image class='avatimg' src='{{userinfo.avatarUrl}}'></image>
     <view class='username'>{{userinfo.nickName}}</view>
   </view>
-
-
+  <view>
+    <view class='mycollection'>我的收藏</view>
+    <view>
+   <view wx:for="{{mylove}}" wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
+    <view>
+      <image src='{{item.pic}}' class='picimg' lazy-load='true' mode='widthFix'></image>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  </view>
+  </view>
+<template name="item">
+  <view wx:key="{{item.id}}" class='menuitem' data-id='{{item.id}}' bindtap='gotodetails'>
+    <view>
+      <image src='{{pic}}' class='picimg' lazy-load='true' mode='widthFix'></image>
+      <text>{{name}}</text>
+    </view>
+  </view>
+</template>
 </view>
 <view wx:else>
-  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='btn-ok'>点击登陆</button>
 </view>
